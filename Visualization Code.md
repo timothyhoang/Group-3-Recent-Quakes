@@ -1,9 +1,9 @@
-plot_quakes plots the earthquakes in a rectangular region around coordinates in latitude and longitude from the earthquake 
-data in quakes. The rectangular region is defined by dimensions (latitude x longitude), where:
-      llcrnrlon = longitude - dimensions[2]/2 (longitude of lower left corner of region)
-      urcrnrlon = longitide + dimensions[2]/2 (longitude of upper right corner of region)
-      llcrnrlat = latitude - dimensions[1]/2 (latitude of lower left corner of region)
-      urcrnrlat = latitude + dimensions[1]/2 (latitude of upper right corner of region)
+plot_quakes plots the earthquakes in a rectangular region around coordinates in latitude and longitude from the earthquake \n
+data in quakes. The rectangular region is defined by dimensions (latitude x longitude), where:\n
+      llcrnrlon = longitude - dimensions[2]/2 (longitude of lower left corner of region)\n
+      urcrnrlon = longitide + dimensions[2]/2 (longitude of upper right corner of region)\n
+      llcrnrlat = latitude - dimensions[1]/2 (latitude of lower left corner of region)\n
+      urcrnrlat = latitude + dimensions[1]/2 (latitude of upper right corner of region)\n
 the resolution and area threshold (area_thresh) of the map is handled based on the area of the dimensions provided and
 
 @param quakes - a data frame containing the earthquake data (need to document proper formatting of data frame)
