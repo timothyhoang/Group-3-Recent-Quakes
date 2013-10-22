@@ -27,3 +27,8 @@ ipython notebook --no-browser --ip=0.0.0.0 --script --pylab=inline
 You should get a response that the ipython notebook is running at xxxx which you will type into your browser.
 
 Choose *Recent Earthquakes* in the ipython notebook dashboard and then click *cell* --> *run all*
+
+## Issues
+We were able to write code to cache the data locally, so anyone who uses our code caches a copy of the live data for
+themselves to use at a later date. However, we were unable to upload the data to github because we kept getting fatal 
+errors.
