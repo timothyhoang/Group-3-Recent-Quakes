@@ -12,6 +12,7 @@
 # @param dimensions - the dimensions of the region to be plotted (latitude x longitude) as a list [degrees in latitude, degrees in longitude]
 # @param projection - the type of projection ('cyl', 'merc', 'mill', 'cea' or 'gall')
 
+```python
 def plot_quakes(quakes, longitude, latitude, dimensons, projection):
     
     # Resolution, stored in res, will be narrowed down based on the area of the dimensions provided
@@ -46,6 +47,7 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
         m.plot(x, y, color = col, marker = '.')
 	
     return m
+    
     
 # Example:
 # To plot the earthquakes in California, for a data frame for earthquakes structured from our code:
