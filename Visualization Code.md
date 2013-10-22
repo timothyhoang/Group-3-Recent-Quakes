@@ -170,6 +170,7 @@ def plot_quakes_simple(quakes):
             depth_col = depth_level[0]
         else:
             depth_col = depth_level[0]
+            
         m.plot(x[i], 
                y[i],
                alpha = 0.5,
