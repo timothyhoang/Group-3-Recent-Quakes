@@ -108,3 +108,74 @@ Run:
  
  plot_quakes(California, Longitude, Latitude, dimensions, projection)
 ```
+
+Here is the simplified coe, which simple takes in a data frame of earthquake data and plots all of the points:
+
+```python
+from mpl_toolkits.basemap import Basemap
+
+# plot_quakes plots the earthquakes as circles in a rectangular region around the mean of the coordinates where the size of the 
+# circle represents the magnitude of the earthquake and light the earthquake is represents the magnitude 
+
+def plot_quakes_simple(quakes):
+    
+    # Resolution, stored in res, will be selected based on the area of the dimensions provided
+    
+    lat_0 = quakes['Latitude'].mean()
+    lon_0 = quakes['Longitude'].mean()
+
+    max_lat = quakes['Latitude'].max()
+    min_lat = quakes['Latitude'].min()
+    max_lon = quakes['Longitude'].max()
+    min_lon = quakes['Longitude'].min()
+    dimensions = [1.2*(max_lat-min_lat), 1.2*(max_lon-min_lon)]
+
+    threshold = [1,10,100,1000,10000]
+    res = ['f','h','i','l','c']
+    area = dimensions[0]*dimensions[1]
+    
+    depth_level = ('(0,0,80)','(0,0,120)','(0,0,160)','(0,0,200)','(0,0,240)')
+
+    for i in range(5):
+        if area <= threshold[i]:
+            res = res[i]
+            break
+        if i == 5:
+            res = res[5]
+
+    # Plot of the region in the map 
+    m = Basemap(llcrnrlon=longitude-dimensions[1]/2,
+                llcrnrlat=latitude-dimensions[0]/2,
+                urcrnrlon=longitide+dimensions[1]/2,
+                urcrnrlat=latitude+dimensions[0]/2,
+                resolution=res,
+                projection='nsper',
+                lat_0=latitude,lon_0=longitude)
+				
+    m.drawcoastlines()
+    m.drawcountries()
+    m.fillcontinents(color='coral',lake_color='blue')
+    m.drawmapboundary(fill_color='aqua')
+	
+    x, y = m(quakes.Longitude, quakes.Latitude)
+
+    for i in range(len(x)-1):
+        if quakes.Depth[i] < 100:
+            depth_col = depth_level[0]
+        elif 100 <= quakes.Depth[i] < 200:
+            depth_col = depth_level[0]
+        elif 200 <= quakes.Depth[i] < 300:
+            depth_col = depth_level[0]
+        elif 300 <= quakes.Depth[i] < 400:
+            depth_col = depth_level[0]
+        else:
+            depth_col = depth_level[0]
+        m.plot(x[i], 
+               y[i],
+               alpha = 0.5,
+               color = depth_col, 
+               marker = 'o', 
+               markersize = (quakes.Magnitude[i]**2)*pi)
+
+    return m
+```
