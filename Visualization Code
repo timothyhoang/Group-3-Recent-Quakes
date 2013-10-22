@@ -47,7 +47,7 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
         m.plot(x, y, color = col, marker = '.')
 	
     return m
-    
+```    
     
 # Example:
 # To plot the earthquakes in California, for a data frame for earthquakes structured from our code:
