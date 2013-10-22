@@ -60,8 +60,9 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
     
 Example:
 To plot the earthquakes in California, for a data frame for earthquakes structured from our code:
-	quakes_df = pd.DataFrame({"Source":listPropCode,"Network":listPropNet,"Time":listPropTime,"Longitude":listGeoLongitude,"Latitude":listGeoLatitude,
-	"Depth":listGeoDepth,"NST":listPropNst,"Place":listPropPlace,"Magnitude":listPropMag})
+```
+quakes_df = pd.DataFrame({"Source":listPropCode,"Network":listPropNet,"Time":listPropTime,"Longitude":listGeoLongitude,"Latitude":listGeoLatitude, "Depth":listGeoDepth,"NST":listPropNst,"Place":listPropPlace,"Magnitude":listPropMag})
+```
 Run:
 ```python
  California = quakes_df[quakes_df.Source=='ci']
