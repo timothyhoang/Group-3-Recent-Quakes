@@ -1,9 +1,9 @@
 # plot_quakes plots the earthquakes in a rectangular region around coordinates in latitude and longitude from the earthquake 
 # data in quakes. The rectangular region is defined by dimensions (latitude x longitude), where:
-# 	llcrnrlon = longitude - dimensions[2]/2 (longitude of lower left corner of region)
-#	urcrnrlon = longitide + dimensions[2]/2 (longitude of upper right corner of region)
-#	llcrnrlat = latitude - dimensions[1]/2 (latitude of lower left corner of region)
-#	urcrnrlat = latitude + dimensions[1]/2 (latitude of upper right corner of region)
+#       llcrnrlon = longitude - dimensions[2]/2 (longitude of lower left corner of region)
+#       urcrnrlon = longitide + dimensions[2]/2 (longitude of upper right corner of region)
+#       llcrnrlat = latitude - dimensions[1]/2 (latitude of lower left corner of region)
+#       urcrnrlat = latitude + dimensions[1]/2 (latitude of upper right corner of region)
 # the resolution and area threshold (area_thresh) of the map is handled based on the area of the dimensions provided and
 #
 # @param quakes - a data frame containing the earthquake data (need to document proper formatting of data frame)
@@ -40,7 +40,7 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
     m.fillcontinents(color='coral',lake_color='blue')
     m.drawmapboundary(fill_color='aqua')
 	
-	for i in range(10):
+    for i in range(10):
         color = str((0,0,.3+i*.05))
         x, y = m(quakes.Longitude[quakes.Magnitude <= i], quakes.Magnitude[quakes.Depth <= i])	
         m.plot(x, y, color = col, marker = '.')
