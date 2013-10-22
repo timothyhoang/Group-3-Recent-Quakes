@@ -9,7 +9,7 @@ data in quakes. The rectangular region is defined by dimensions (latitude x long
       
       urcrnrlat = latitude + dimensions[1]/2 (latitude of upper right corner of region)
       
-the resolution and area threshold (area_thresh) of the map is handled based on the area of the dimensions provided and
+The resolution and area threshold (area_thresh) of the map is handled based on the area of the dimensions provided.
 
 @param quakes - a data frame containing the earthquake data (need to document proper formatting of data frame)
 
@@ -18,6 +18,7 @@ the resolution and area threshold (area_thresh) of the map is handled based on t
 @param latitude - the latitude of the center of the region to be plotted
 
 @param dimensions - the dimensions of the region to be plotted (latitude x longitude) as a list [degrees in latitude, degrees in longitude]
+
 @param projection - the type of projection ('cyl', 'merc', 'mill', 'cea' or 'gall')
 
 ```python
@@ -61,7 +62,7 @@ Example:
 To plot the earthquakes in California, for a data frame for earthquakes structured from our code:
 	quakes_df = pd.DataFrame({"Source":listPropCode,"Network":listPropNet,"Time":listPropTime,"Longitude":listGeoLongitude,"Latitude":listGeoLatitude,
 	"Depth":listGeoDepth,"NST":listPropNst,"Place":listPropPlace,"Magnitude":listPropMag})
- Run:
+Run:
 ```python
  California = quakes_df[quakes_df.Source=='ci']
  Longitude = -119.5
