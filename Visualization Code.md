@@ -27,7 +27,7 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
     # Resolution, stored in res, will be narrowed down based on the area of the dimensions provided
     threshold = [1,10,100,1000,10000]
     res = ['f','h','i','l','c']
-    area = dimensions[1]*dimensions[2]
+    area = dimensions[0]*dimensions[1]
     
     for i in range(5):
         if area <= threshold[i]:
@@ -37,10 +37,10 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
             res = res[5]
 
     # Plot of the region in the map 
-    m = Basemap(llcrnrlon=longitude-dimensions[2]/2,
-                llcrnrlat=latitude-dimensions[1]/2,
-                urcrnrlon=longitide+dimensions[2]/2,
-                urcrnrlat=latitude+dimensions[1]/2,
+    m = Basemap(llcrnrlon=longitude-dimensions[1]/2,
+                llcrnrlat=latitude-dimensions[0]/2,
+                urcrnrlon=longitide+dimensions[1]/2,
+                urcrnrlat=latitude+dimensions[0]/2,
                 resolution=res,
                 projection=projection,
                 lat_0=latitude,lon_0=longitude)
@@ -57,6 +57,41 @@ def plot_quakes(quakes, longitude, latitude, dimensons, projection):
 	
     return m
 ```    
+
+If this code does not work, try:
+```python
+def plot_quakes(quakes, longitude, latitude, dimensons, projection):
+    
+    # Resolution, stored in res, will be selected based on the area of the dimensions provided
+    threshold = [1,10,100,1000,10000]
+    res = ['f','h','i','l','c']
+    area = dimensions[0]*dimensions[1]
+    
+    for i in range(5):
+        if area <= threshold[i]:
+            res = res[i]
+            break
+        if i == 5:
+            res = res[5]
+
+    # Plot of the region in the map 
+    m = Basemap(llcrnrlon=longitude-dimensions[1]/2,
+                llcrnrlat=latitude-dimensions[0]/2,
+                urcrnrlon=longitide+dimensions[1]/2,
+                urcrnrlat=latitude+dimensions[0]/2,
+                resolution=res,
+                projection=projection,
+                lat_0=latitude,lon_0=longitude)
+				
+    m.drawcoastlines()
+    m.drawcountries()
+    m.fillcontinents(color='coral',lake_color='blue')
+    m.drawmapboundary(fill_color='aqua')
+	
+    x, y = m(quakes.Longitude, quakes.Latitude)
+    m.plot(x, y, 'k.')
+    return m
+```
     
 Example:
 To plot the earthquakes in California, for a data frame for earthquakes structured from our code:
